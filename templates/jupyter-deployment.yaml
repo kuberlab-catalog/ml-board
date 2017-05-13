@@ -31,7 +31,7 @@ spec:
         image: "{{ printf "%s:%s" .Values.jupyter.image.Name .Values.jupyter.image.Tag }}"
         env:
           - name: PYTHONPATH
-            value: "$PYTHONPATH:/notebooks/lib"
+            value: "notebooks/lib"
         ports:
         - containerPort: 8888
           name: jupyter
