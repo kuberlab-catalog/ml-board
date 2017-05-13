@@ -29,6 +29,9 @@ spec:
             cpu: "{{ .Values.jupyter.cpu.limits }}"
             memory: "{{ .Values.jupyter.memory.limits }}"
         image: "{{ printf "%s:%s" .Values.jupyter.image.Name .Values.jupyter.image.Tag }}"
+        env:
+          - name: PYTHONPATH
+            value: "$PYTHONPATH:/notebooks/lib"
         ports:
         - containerPort: 8888
           name: jupyter
@@ -42,6 +45,9 @@ spec:
         - name: data
           mountPath: "/notebooks/training"
           subPath: {{.Values.workspace}}/training
+        - name: data
+          mountPath: "/notebooks/lib"
+          subPath: {{.Values.workspace}}/lib
       volumes:
         - name: data
           persistentVolumeClaim:
