@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: mlboard-postgresql
+  namespace: {{ .Release.Namespace }}
+  labels:
+    app: mlboard
+    component: postgresql
+  annotations:
+    prometheus.io/scrape: "true"
+    prometheus.io/port: "9187"
+spec:
+  ports:
+  - name: postgresql
+    port: 5432
+    targetPort: postgresql
+  selector:
+    app: mlboard
+    component: postgresql

@@ -1,14 +1,15 @@
-name: mlboard
-home: https://github.com/kuberlab-catalog/ml-board
-version: 1.0.0
-description: ML Board
-sources:
-  - https://github.com/kuberlab-catalog/ml-board
-maintainers:
-  - name: Alexander Gunin
-keywords:
-  - keubernetes
-  - tensorflow
-  - ml
-  - kuberlab
-icon: https://dev.kuberlab.io/favicon.ico
+Description: Kuberlab ml-board component
+Engine: gotpl
+Home: http://kuberlab.com
+Icon: https://storage.googleapis.com/kuberlab/static/favicon.ico
+Keywords:
+- kubernetes
+- Artificial Intelligence
+- tensorflow
+- management
+- kuberlab
+Maintainers:
+- Email: agunin@kuberlab.com
+  Name: Gunin Alexander
+Name: mlboard
+Version: 3.0.0

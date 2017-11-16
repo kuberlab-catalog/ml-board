@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: mlboard-v2
+  namespace: {{ .Release.Namespace }}
+  labels:
+    app: mlboard-v2
+    workspace: kuberlab
+    component: master
+spec:
+  type: ClusterIP
+  ports:
+    - port: 8082
+      name: mlboard
+      targetPort: 8082
+  selector:
+    app: mlboard-v2
+    workspace: kuberlab
+    component: master

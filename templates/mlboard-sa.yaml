@@ -1,0 +1,9 @@
+{{- if .Values.global.useRBAC }}
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: mlboard
+  namespace: {{ .Release.Namespace }}
+  labels:
+    app: mlboard
+{{- end }}

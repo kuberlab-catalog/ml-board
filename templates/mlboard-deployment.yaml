@@ -1,36 +1,50 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: "mlboard-{{.Values.workspace}}"
+  name: mlboard-v2
   labels:
-    app: mlboard
-    heritage: "{{ .Release.Service }}"
-    workspace: {{.Values.workspace}}
+    app: mlboard-v2
+    workspace: kuberlab
     component: master
-  annotations:
-    helm.sh/created: {{.Release.Time.Seconds | quote }}
 spec:
   replicas: 1
   template:
     metadata:
       labels:
-        app: mlboard
-        heritage: "{{ .Release.Service }}"
+        app: mlboard-v2
         component: master
-        workspace: {{.Values.workspace}}
+        workspace: kuberlab
     spec:
+      {{- if .Values.mlboard.nodeSelector.enabled }}
+      nodeSelector:
+      {{- range $key, $value := .Values.mlboard.nodeSelector.labels }}
+        {{ $key }}: "{{ $value }}"
+      {{- end }}
+      {{- end }}
+      {{- if .Values.global.useRBAC }}
+      serviceAccountName: mlboard
+      {{- end }}
       containers:
       - name: mlboard
         command: ["board"]
-        args: ["--workspace","{{.Values.workspace}}"]
-        resources:
-          requests:
-            cpu: "{{ .Values.mlboard.cpu.requests }}"
-            memory: "{{ .Values.mlboard.memory.requests }}"
-          limits:
-            cpu: "{{ .Values.mlboard.cpu.limits }}"
-            memory: "{{ .Values.mlboard.memory.limits }}"
-        image: "{{ printf "%s:%s" .Values.mlboard.image.Name .Values.mlboard.image.Tag }}"
+        image: "{{ printf "%s:%s" .Values.mlboard.Image.Name .Values.mlboard.Image.Tag}}"
+        imagePullPolicy: Always
+        env:
+          - name: PGHOST
+            value: "{{ printf "mlboard-postgresql.%s" .Release.Namespace }}"
+          - name: PGDATABASE
+            value: postgres
+          - name: PGUSER
+            value: postgres
+          - name: PGPASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: mlboard-postgresql
+                key: postgres-password
+          {{- if .Values.global.useRBAC }}
+          - name: SERVICE_ACCOUNT_NAME
+            value: mlboard
+      	  {{- end }}
         ports:
         - containerPort: 8082
           name: mlboard
