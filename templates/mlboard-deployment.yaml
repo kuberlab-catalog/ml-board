@@ -27,7 +27,7 @@ spec:
       containers:
       - name: mlboard
         command: ["board"]
-        image: '{{ printf "%s:%s" .Values.mlboard.Image.Name .Values.mlboard.Image.Tag}}'
+        image: '{{ printf "%s:%s" .Values.mlboard.Image.Name .Values.mlboard.Image.Tag }}'
         imagePullPolicy: Always
         env:
           - name: PGHOST
@@ -44,13 +44,13 @@ spec:
           {{- if .Values.global.useRBAC }}
           - name: SERVICE_ACCOUNT_NAME
             value: mlboard
-      	  {{- end }}
-      	  - name: CRON_ENABLED
-      	    value: '{{ .Values.mlboard.cron.enabled }}'
-      	  - name: FETCHING_PERIOD
-      	    value: '{{ .Values.mlboard.fetching.pattern }}'
-      	  - name: PROMETHEUS_FETCH_INTERVAL
-      	    value: '{{ .Values.mlboard.fetching.prometheusInterval }}'
+          {{- end }}
+          - name: CRON_ENABLED
+            value: '{{ .Values.mlboard.cron.enabled }}'
+          - name: FETCHING_PERIOD
+            value: '{{ .Values.mlboard.fetching.pattern }}'
+          - name: PROMETHEUS_FETCH_INTERVAL
+            value: '{{ .Values.mlboard.fetching.prometheusInterval }}'
         ports:
         - containerPort: 8082
           name: mlboard
