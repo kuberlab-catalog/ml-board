@@ -1,15 +1,15 @@
-{{- if .Values.persistence.fromProvider -}}
+{{- if .Values.mlboard.persistence.fromProvider -}}
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
   name: mlboard-postgresql
 spec:
-  {{- if .Values.persistence.storageClass }}
-  storageClassName: {{ .Values.persistence.storageClass | quote }}
+  {{- if .Values.mlboard.persistence.storageClass }}
+  storageClassName: {{ .Values.mlboard.persistence.storageClass | quote }}
   {{- end }}
   accessModes:
-    - {{ .Values.persistence.accessMode | quote }}
+    - {{ .Values.mlboard.persistence.accessMode | quote }}
   resources:
     requests:
-      storage: {{ .Values.persistence.size }}
+      storage: {{ .Values.mlboard.persistence.size }}
 {{- end -}}
