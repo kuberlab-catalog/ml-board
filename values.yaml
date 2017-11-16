@@ -2,6 +2,11 @@ mlboard:
   Image:
     Name: kuberlab/mlboard
     Tag: v3
+  cron:
+    enabled: false
+  fetching:
+    pattern: '0 * * * *'
+    prometheusInterval: '60m'
   persistence:
     fromProvider: true
     storageClass: anything
