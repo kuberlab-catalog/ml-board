@@ -20,6 +20,7 @@ rules:
     - configmaps
     - nodes
     - pods/status
+    - role-mlboard
     - persistentvolumeclaims
   verbs:
     - bind
