@@ -10,6 +10,7 @@ mlboard:
   persistence:
     fromProvider: true
     accessMode: ReadWriteOnce
+    #storageClass: anything
     size: 10Gi
     volume:
       hostPath:
