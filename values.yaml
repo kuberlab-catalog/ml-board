@@ -9,7 +9,6 @@ mlboard:
     prometheusInterval: '60m'
   persistence:
     fromProvider: true
-    storageClass: anything
     accessMode: ReadWriteOnce
     size: 10Gi
     volume:
