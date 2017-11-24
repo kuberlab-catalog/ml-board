@@ -57,7 +57,7 @@ spec:
         volumeMounts:
         - name: mlboard-config
           mountPath: /etc/mlboard/
-  volumes:
+    volumes:
     - name: config-volume
       configMap:
         defaultMode: 420
