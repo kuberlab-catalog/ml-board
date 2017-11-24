@@ -55,7 +55,7 @@ spec:
         - containerPort: 8082
           name: mlboard
         volumeMounts:
-        - name: mlboard-config
+        - name: config-volume
           mountPath: /etc/mlboard/
       volumes:
       - name: config-volume
