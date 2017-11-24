@@ -20,5 +20,9 @@ mlboard:
     labels:
       mlboard: mlboard
 
+  pvcCreation:
+    className: ""
+    volumeName: ""
+
 global:
   useRBAC: true

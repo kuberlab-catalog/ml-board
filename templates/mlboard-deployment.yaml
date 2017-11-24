@@ -54,3 +54,11 @@ spec:
         ports:
         - containerPort: 8082
           name: mlboard
+        volumeMounts:
+        - name: mlboard-config
+          mountPath: /etc/mlboard/
+  volumes:
+    - name: config-volume
+      configMap:
+        defaultMode: 420
+        name: mlboard-config

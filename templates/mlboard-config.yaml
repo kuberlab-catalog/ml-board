@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mlboard-config
+data:
+  mlboard.yaml: |
+    storage:
+      className: '{{ .Values.mlboard.pvcCreation.className }}'
+      volumeName: '{{ .Values.mlboard.pvcCreation.volumeName }}'
