@@ -22,7 +22,10 @@ mlboard:
 
   pvcCreation:
     className: ""
-    volumeName: ""
+    persistentVolumeSource:
+      nfs:
+        server: 127.0.0.1
+        path: /
 
 global:
   useRBAC: true

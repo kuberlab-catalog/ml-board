@@ -5,5 +5,4 @@ metadata:
 data:
   mlboard.yaml: |
     storage:
-      className: '{{ .Values.mlboard.pvcCreation.className }}'
-      volumeName: '{{ .Values.mlboard.pvcCreation.volumeName }}'
+{{ toYaml .Values.mlboard.pvcCreation | indent 6 }}
