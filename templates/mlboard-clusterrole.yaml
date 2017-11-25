@@ -22,7 +22,7 @@ rules:
     - pods/status
     - role-mlboard
     - persistentvolumeclaims
-    - persistentvolume
+    - persistentvolumes
   verbs:
     - bind
     - get
