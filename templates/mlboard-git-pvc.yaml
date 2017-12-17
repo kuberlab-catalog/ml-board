@@ -1,0 +1,15 @@
+{{- if .Values.mlboard.git.persistence.fromProvider -}}
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: mlboard-git
+spec:
+  {{- if .Values.mlboard.git.persistence.storageClass }}
+  storageClassName: {{ .Values.mlboard.git.persistence.storageClass | quote }}
+  {{- end }}
+  accessModes:
+    - {{ .Values.mlboard.git.persistence.accessMode | quote }}
+  resources:
+    requests:
+      storage: {{ .Values.mlboard.git.persistence.size }}
+{{- end -}}

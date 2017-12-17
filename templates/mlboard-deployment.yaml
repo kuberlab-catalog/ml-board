@@ -57,8 +57,21 @@ spec:
         volumeMounts:
         - name: config-volume
           mountPath: /etc/mlboard/
+        - name: data
+          mountPath: /pacak-git-bare
+          subPath: pacak-git-bare
+        - name: data
+          mountPath: /pacak-git-local
+          subPath: pacak-git-local
       volumes:
       - name: config-volume
         configMap:
           defaultMode: 420
           name: mlboard-config
+      - name: data
+        {{- if .Values.mlboard.git.persistence.fromProvider }}
+        persistentVolumeClaim:
+          claimName: mlboard-git
+        {{- else }}
+{{ toYaml .Values.mlboard.git.persistence.volume | indent 8 }}
+        {{- end }}

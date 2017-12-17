@@ -66,9 +66,9 @@ spec:
             subPath: dealer-db
       volumes:
       - name: data
-        {{- if .Values.mlboard.persistence.fromProvider }}
+        {{- if .Values.mlboard.postgres.persistence.fromProvider }}
         persistentVolumeClaim:
           claimName: mlboard-postgresql
         {{- else }}
-{{ toYaml .Values.mlboard.persistence.volume | indent 8 }}
+{{ toYaml .Values.mlboard.postgres.persistence.volume | indent 8 }}
         {{- end }}

@@ -7,14 +7,24 @@ mlboard:
   fetching:
     pattern: '0 * * * *'
     prometheusInterval: '60m'
-  persistence:
-    fromProvider: true
-    accessMode: ReadWriteOnce
-    #storageClass: anything
-    size: 10Gi
-    volume:
-      hostPath:
-        path: /var/lib/mlboard-postgresql/data
+  postgres:
+    persistence:
+      fromProvider: true
+      accessMode: ReadWriteOnce
+      #storageClass: anything
+      size: 10Gi
+      volume:
+        hostPath:
+          path: /var/lib/mlboard-postgresql/data
+  git:
+    persistence:
+      fromProvider: true
+      accessMode: ReadWriteOnce
+      #storageClass: anything
+      size: 10Gi
+      volume:
+        hostPath:
+          path: /var/lib/mlboard-git/data
   nodeSelector:
     enabled: false
     labels:
