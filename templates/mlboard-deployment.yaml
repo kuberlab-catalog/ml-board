@@ -51,6 +51,15 @@ spec:
             value: '{{ .Values.mlboard.fetching.pattern }}'
           - name: PROMETHEUS_FETCH_INTERVAL
             value: '{{ .Values.mlboard.fetching.prometheusInterval }}'
+        readinessProbe:
+          exec:
+            command:
+            - sh
+            - -c
+            - exec pg_isready --host $POD_IP
+          initialDelaySeconds: 5
+          timeoutSeconds: 3
+          periodSeconds: 5
         ports:
         - containerPort: 8082
           name: mlboard
