@@ -3,6 +3,7 @@ kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
   name: mlboard-git
+  namespace: {{ .Release.Namespace }}
 spec:
   {{- if .Values.mlboard.git.persistence.storageClass }}
   storageClassName: {{ .Values.mlboard.git.persistence.storageClass | quote }}
