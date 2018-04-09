@@ -30,6 +30,7 @@ mlboard:
     labels:
       mlboard: mlboard
 
+  dealer_limits: true
   pvcCreation:
     className: ""
     #persistentVolumeSource:
