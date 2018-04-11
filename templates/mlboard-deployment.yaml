@@ -51,6 +51,15 @@ spec:
             value: '{{ .Values.mlboard.fetching.pattern }}'
           - name: PROMETHEUS_FETCH_INTERVAL
             value: '{{ .Values.mlboard.fetching.prometheusInterval }}'
+          {{- if .Values.mlboard.nodeSelector.default_gpu }}
+          - name: DEFAULT_GPU_NODE_SELECTOR
+            value: '{{ .Values.mlboard.nodeSelector.default_gpu }}'
+          {{- end }}
+          {{- if .Values.mlboard.nodeSelector.default_gpu }}
+          - name: DEFAULT_CPU_NODE_SELECTOR
+            value: '{{ .Values.mlboard.nodeSelector.default_cpu }}'
+          {{- end }}
+
         readinessProbe:
           httpGet:
             path: /probe
