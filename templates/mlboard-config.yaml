@@ -4,6 +4,4 @@ metadata:
   name: mlboard-config
 data:
   mlboard.yaml: |
-    dealer_limits: {{ .Values.mlboard.dealerLimits }}
-    storage:
-{{ toYaml .Values.mlboard.pvcCreation | indent 6 }}
+    {{ toYaml .Values.mlboard.config | indent 4 }}

@@ -33,13 +33,17 @@ mlboard:
     labels:
       mlboard: mlboard
 
-  dealer_limits: true
-  pvcCreation:
-    className: ""
-    #persistentVolumeSource:
-    #  nfs:
-    #    server: 127.0.0.1
-    #    path: /
+  config:
+    dealer_limits: true
+    disallow_ui_gpu: false
+    disallow_serving_gpu: false
+
+    storage:
+      className: ""
+      #persistentVolumeSource:
+      #  nfs:
+      #    server: 127.0.0.1
+      #    path: /
 
 global:
   useRBAC: true
