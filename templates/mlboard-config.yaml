@@ -4,4 +4,4 @@ metadata:
   name: mlboard-config
 data:
   mlboard.yaml: |
-    {{ toYaml .Values.mlboard.config | indent 4 }}
+{{ toYaml .Values.mlboard.config | indent 4 }}
