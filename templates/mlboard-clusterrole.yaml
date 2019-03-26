@@ -4,7 +4,7 @@ apiVersion: rbac.authorization.k8s.io/v1beta1
 metadata:
   name: role-mlboard
 rules:
-- apiGroups: ["", "extensions", "apps", "rbac.authorization.k8s.io"] # "" indicates the core API group
+- apiGroups: ["", "autoscaling", "extensions", "apps", "rbac.authorization.k8s.io"] # "" indicates the core API group
   resources:
     - secrets
     - events
@@ -25,6 +25,7 @@ rules:
     - role-mlboard
     - persistentvolumeclaims
     - persistentvolumes
+    - horizontalpodautoscalers
   verbs:
     - bind
     - get
