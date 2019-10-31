@@ -8,6 +8,11 @@ metadata:
     component: master
 spec:
   replicas: 1
+  selector:
+    matchLabels:
+      app: mlboard-v2
+      component: master
+      workspace: kuberlab
   template:
     metadata:
       labels:

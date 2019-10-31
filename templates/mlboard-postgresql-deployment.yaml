@@ -7,6 +7,10 @@ metadata:
     app: mlboard
     component: postgresql
 spec:
+  selector:
+    matchLabels:
+      app: mlboard
+      component: postgresql
   template:
     metadata:
       labels:
