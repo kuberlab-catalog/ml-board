@@ -3,7 +3,7 @@ mlboard:
     Name: kuberlab/mlboard
     Tag: v3
   cron:
-    enabled: false
+    enabled: true
   fetching:
     pattern: '0 * * * *'
     prometheusInterval: '60m'
