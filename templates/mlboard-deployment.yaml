@@ -5,19 +5,19 @@ metadata:
   labels:
     app: mlboard-v2
     workspace: kuberlab
-    component: master
+    component: mlboard
 spec:
   replicas: 1
   selector:
     matchLabels:
       app: mlboard-v2
-      component: master
+      component: mlboard
       workspace: kuberlab
   template:
     metadata:
       labels:
         app: mlboard-v2
-        component: master
+        component: mlboard
         workspace: kuberlab
     spec:
       {{- if .Values.mlboard.nodeSelector.enabled }}

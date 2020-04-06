@@ -6,7 +6,7 @@ metadata:
   labels:
     app: mlboard-v2
     workspace: kuberlab
-    component: master
+    component: mlboard
 spec:
   type: ClusterIP
   ports:
@@ -16,4 +16,4 @@ spec:
   selector:
     app: mlboard-v2
     workspace: kuberlab
-    component: master
+    component: mlboard
